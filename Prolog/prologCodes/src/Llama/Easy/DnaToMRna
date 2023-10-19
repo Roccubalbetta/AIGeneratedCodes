@@ -1,0 +1,10 @@
+transcribe(dna(a), rna(u)).
+transcribe(dna(t), rna(a)).
+transcribe(dna(g), rna(c)).
+transcribe(dna(c), rna(g)).
+
+transcribe_dna([], []).
+transcribe_dna([H|T], [RNA_H|RNA_T]) :- transcribe(dna(H), rna(RNA_H)), transcribe_dna(T, RNA_T).
+
+?- transcribe_dna([a, t, g, c, a, a], RNA).
+RNA = [u, a, c, g, u, u].
